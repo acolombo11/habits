@@ -1,12 +1,23 @@
 package com.willbsp.habits.ui.screens.logbook
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.SentimentVeryDissatisfied
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -24,7 +35,7 @@ fun LogbookScreen(
     navigateUp: () -> Unit,
     logbookUiState: LogbookUiState,
     completedOnClick: (LocalDate) -> Unit,
-    habitOnClick: (Int) -> Unit
+    habitOnClick: (Int) -> Unit,
 ) {
 
     Scaffold(
@@ -40,27 +51,25 @@ fun LogbookScreen(
         when (logbookUiState) {
 
             is LogbookUiState.SelectedHabit -> {
-
-                Column(
-                    modifier = modifier
+                LogbookDatePicker(
+                    modifier = Modifier
                         .padding(innerPadding)
                         .fillMaxSize(),
+                    logbookUiState = logbookUiState,
+                    dateOnClick = completedOnClick
+                )
+                Column(
+                    modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Bottom,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-
-
-                    LogbookDatePicker(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .weight(1f, true),
-                        logbookUiState = logbookUiState,
-                        dateOnClick = completedOnClick
-                    )
-
                     Divider()
 
                     LazyRow(
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.background)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically,
                         contentPadding = PaddingValues(
                             start = 16.dp,
@@ -79,7 +88,8 @@ fun LogbookScreen(
                                         text = it.name,
                                         style = MaterialTheme.typography.bodyMedium
                                     )
-                                })
+                                }
+                            )
                         }
                     }
 
@@ -89,8 +99,7 @@ fun LogbookScreen(
 
             is LogbookUiState.NoHabits -> {
                 FullscreenHint(
-                    modifier = modifier
-                        .fillMaxSize(),
+                    modifier = modifier.fillMaxSize(),
                     icon = Icons.Default.SentimentVeryDissatisfied,
                     iconContentDescription = R.string.logbook_add_a_new_habit,
                     text = R.string.logbook_empty_text
