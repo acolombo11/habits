@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ImportExport
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.twotone.ImportExport
+import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -67,7 +67,7 @@ fun SettingsScreen(
                 actions = {
                     IconButton(onClick = navigateToAboutScreen) {
                         Icon(
-                            imageVector = Icons.Filled.Info,
+                            imageVector = Icons.TwoTone.Info,
                             contentDescription = stringResource(R.string.settings_about_screen)
                         )
                     }
@@ -226,7 +226,7 @@ fun SettingsImportDialog(
     AlertDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Filled.ImportExport, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.ImportExport, contentDescription = null) },
         title = { Text(text = stringResource(R.string.settings_import_data)) },
         text = { Text(text = stringResource(R.string.settings_import_dialog_desc)) },
         confirmButton = {

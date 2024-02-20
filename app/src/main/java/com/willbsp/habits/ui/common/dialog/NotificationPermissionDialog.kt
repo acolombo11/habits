@@ -1,7 +1,7 @@
 package com.willbsp.habits.ui.common.dialog
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -24,7 +24,7 @@ fun NotificationPermissionDialog(
     AlertDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Filled.Notifications, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.Notifications, contentDescription = null) },
         title = { Text(text = stringResource(R.string.notifications)) },
         text = {
             Text(

@@ -1,7 +1,7 @@
 package com.willbsp.habits.ui.common.dialog
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.twotone.Alarm
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -23,7 +23,7 @@ fun AlarmsPermissionDialog(
     AlertDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Filled.Alarm, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.Alarm, contentDescription = null) },
         title = { Text(text = stringResource(R.string.alarms_and_reminders)) },
         text = {
             Text(
