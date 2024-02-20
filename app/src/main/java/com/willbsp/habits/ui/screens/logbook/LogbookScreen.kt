@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SentimentVeryDissatisfied
+import androidx.compose.material.icons.twotone.SentimentVeryDissatisfied
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -100,7 +100,7 @@ fun LogbookScreen(
             is LogbookUiState.NoHabits -> {
                 FullscreenHint(
                     modifier = modifier.fillMaxSize(),
-                    icon = Icons.Default.SentimentVeryDissatisfied,
+                    icon = Icons.TwoTone.SentimentVeryDissatisfied,
                     iconContentDescription = R.string.logbook_add_a_new_habit,
                     text = R.string.logbook_empty_text
                 )
