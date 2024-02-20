@@ -59,7 +59,7 @@ fun AboutScreen(
 
             Icon(
                 modifier = Modifier.size(100.dp),
-                painter = painterResource(id = R.drawable.icon),
+                painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = "",
                 tint = MaterialTheme.colorScheme.primary
             )
