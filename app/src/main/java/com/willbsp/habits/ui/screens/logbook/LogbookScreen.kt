@@ -61,15 +61,17 @@ fun LogbookScreen(
                     Divider()
 
                     LazyRow(
-                        modifier = Modifier
-                            .height(60.dp)
-                            .padding(10.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        contentPadding = PaddingValues(
+                            start = 16.dp,
+                            top = 10.dp,
+                            bottom = 10.dp,
+                            end = 8.dp
+                        )
                     ) {
                         items(items = logbookUiState.habits, key = { it.id }) {
                             FilterChip(
-                                modifier = Modifier
-                                    .padding(end = 8.dp),
+                                modifier = Modifier.padding(end = 8.dp),
                                 selected = it.id == logbookUiState.habitId,
                                 onClick = { habitOnClick(it.id) },
                                 label = {
