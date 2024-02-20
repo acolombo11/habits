@@ -10,7 +10,7 @@ import android.provider.Settings
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.twotone.Done
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberTimePickerState
@@ -61,7 +61,7 @@ fun AddScreen(
         floatingActionButton = {
             HabitsFloatingAction(
                 onClick = onSaveClick,
-                icon = Icons.Default.Done,
+                icon = Icons.TwoTone.Done,
                 contentDescription = stringResource(R.string.add_habit_add_habit)
             )
         }

@@ -3,8 +3,8 @@ package com.willbsp.habits.ui.common.button
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.twotone.Close
+import androidx.compose.material.icons.twotone.Done
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,8 +23,11 @@ fun HabitToggleButton(
 ) {
 
     val haptic = LocalHapticFeedback.current
-    val icon = if (!checkedSecondary && !checked) Icons.Default.Close
-    else Icons.Default.Done
+    val icon = if (!checkedSecondary && !checked) {
+        Icons.TwoTone.Close
+    } else {
+        Icons.TwoTone.Done
+    }
 
     AnimatedContent(targetState = Pair(checked, icon), label = "HabitToggleButton") {
         FilledIconToggleButton(

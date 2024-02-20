@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BugReport
-import androidx.compose.material.icons.filled.DataObject
+import androidx.compose.material.icons.twotone.BugReport
+import androidx.compose.material.icons.twotone.DataObject
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -84,13 +84,13 @@ fun AboutScreen(
 
             AboutListItem(
                 onClick = { uriHandler.openUri("https://github.com/willbsp/habits") },
-                icon = Icons.Default.DataObject,
+                icon = Icons.TwoTone.DataObject,
                 text = stringResource(id = R.string.about_view_source)
             )
 
             AboutListItem(
                 onClick = { uriHandler.openUri("https://github.com/willbsp/habits/issues") },
-                icon = Icons.Default.BugReport,
+                icon = Icons.TwoTone.BugReport,
                 text = stringResource(id = R.string.about_report_an_issue)
             )
 

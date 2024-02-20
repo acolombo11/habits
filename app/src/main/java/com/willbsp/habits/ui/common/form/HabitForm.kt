@@ -12,8 +12,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccessAlarm
-import androidx.compose.material.icons.filled.CalendarToday
+import androidx.compose.material.icons.twotone.AccessAlarm
+import androidx.compose.material.icons.twotone.CalendarToday
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -254,7 +254,7 @@ private fun HabitReminderTimeField(
         interactionSource = source,
         trailingIcon = {
             Icon(
-                imageVector = Icons.Default.AccessAlarm,
+                imageVector = Icons.TwoTone.AccessAlarm,
                 contentDescription = null
             )
         }
@@ -292,7 +292,7 @@ private fun HabitReminderDayField(
         interactionSource = source,
         trailingIcon = {
             Icon(
-                imageVector = Icons.Default.CalendarToday,
+                imageVector = Icons.TwoTone.CalendarToday,
                 contentDescription = null
             )
         }

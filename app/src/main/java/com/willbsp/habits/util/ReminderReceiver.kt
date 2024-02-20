@@ -118,7 +118,7 @@ class ReminderReceiver : BroadcastReceiver() {
                 NotificationCompat.Builder(context, REMINDER_NOTIFICATION_CHANNEL_ID)
                     .setContentTitle(habitName)
                     .setContentText(context.getString(R.string.reminder_notification_desc))
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setSmallIcon(R.drawable.icon)
                     .setContentIntent(pendingIntent)
                     .setAllowSystemGeneratedContextualActions(false)
                     .addAction(completedAction)
