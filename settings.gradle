@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Habits"
+rootProject.name = "habits"
 include ':app'
 include ':shared-test'
