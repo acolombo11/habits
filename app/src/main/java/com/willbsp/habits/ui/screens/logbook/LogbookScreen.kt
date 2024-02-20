@@ -72,7 +72,12 @@ fun LogbookScreen(
                                     .padding(end = 8.dp),
                                 selected = it.id == logbookUiState.habitId,
                                 onClick = { habitOnClick(it.id) },
-                                label = { Text(text = it.name) })
+                                label = {
+                                    Text(
+                                        text = it.name,
+                                        style = MaterialTheme.typography.bodyMedium
+                                    )
+                                })
                         }
                     }
 

@@ -151,7 +151,7 @@ private fun SettingsHeading(
         headlineContent = {
             Text(
                 text = text,
-                style = MaterialTheme.typography.labelLarge,
+                style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.primary
             )
         }
@@ -172,7 +172,7 @@ private fun SettingItem(
         headlineContent = {
             Text(
                 text = stringResource(title),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleMedium
             )
         },
         supportingContent = {
@@ -199,7 +199,7 @@ private fun SettingToggle(
         headlineContent = {
             Text(
                 text = stringResource(title),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleMedium
             )
         },
         supportingContent = {

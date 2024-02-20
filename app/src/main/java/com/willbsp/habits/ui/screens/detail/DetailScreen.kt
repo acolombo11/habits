@@ -16,9 +16,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CalendarToday
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.NotificationsActive
+import androidx.compose.material.icons.twotone.CalendarToday
+import androidx.compose.material.icons.twotone.Edit
+import androidx.compose.material.icons.twotone.NotificationsActive
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -61,7 +61,6 @@ fun DetailScreen(
 
     Scaffold(
         topBar = {
-
             DefaultHabitsAppTopBar(
                 title = detailUiState.habitName,
                 canNavigateBack = true,
@@ -69,7 +68,7 @@ fun DetailScreen(
                 actions = {
                     IconButton(onClick = { navigateToEditHabit(detailUiState.habitId) }) {
                         Icon(
-                            imageVector = Icons.Filled.Edit,
+                            imageVector = Icons.TwoTone.Edit,
                             contentDescription = stringResource(R.string.detail_edit_habit)
                         )
                     }
@@ -82,7 +81,7 @@ fun DetailScreen(
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
-                .padding(start = 20.dp, end = 20.dp)
+                .padding(horizontal = 16.dp)
                 .padding(innerPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -90,11 +89,11 @@ fun DetailScreen(
             item {
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(5.dp)
                 ) {
 
-                    Icon(imageVector = Icons.Default.CalendarToday, null)
+                    Icon(imageVector = Icons.TwoTone.CalendarToday, null)
                     when (detailUiState.type) {
                         HabitFrequency.DAILY -> Text(stringResource(R.string.detail_daily))
                         HabitFrequency.WEEKLY -> Text(
@@ -120,7 +119,7 @@ fun DetailScreen(
                                 )
                             }
                         )
-                        Icon(imageVector = Icons.Default.NotificationsActive, null)
+                        Icon(imageVector = Icons.TwoTone.NotificationsActive, null)
                     }
 
                 }
@@ -203,7 +202,6 @@ fun DetailScreen(
 
         }
 
-
     }
 
 }
@@ -285,7 +283,7 @@ fun CircularDetailScoreCard(
 
                 Text(
                     text = stringResource(id = R.string.detail_score),
-                    style = MaterialTheme.typography.displayMedium,
+                    style = MaterialTheme.typography.headlineMedium,
                     textAlign = TextAlign.Center
                 )
 
@@ -335,7 +333,7 @@ fun DetailCard(
                         .fillMaxWidth(),
                     color = MaterialTheme.colorScheme.onSurface,
                     text = value,
-                    style = MaterialTheme.typography.displayMedium,
+                    style = MaterialTheme.typography.displaySmall,
                     textAlign = TextAlign.Center
                 )
 
@@ -353,7 +351,7 @@ fun DetailCard(
                         .fillMaxWidth(),
                     text = title,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.titleSmall,
                     textAlign = TextAlign.Center
                 )
 

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -33,8 +34,9 @@ fun FullscreenHint(
             )
             Spacer(Modifier.height(10.dp))
             Text(
+                modifier = Modifier.padding(horizontal = 16.dp),
                 text = stringResource(text),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center
             )
         }

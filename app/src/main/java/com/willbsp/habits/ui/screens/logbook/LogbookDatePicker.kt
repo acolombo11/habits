@@ -129,7 +129,7 @@ fun LogbookMonth(
                 Spacer(modifier.weight(1f))
                 Text(
                     text = monthText,
-                    style = MaterialTheme.typography.headlineLarge
+                    style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(modifier.weight(1f))
                 IconButton(
@@ -161,7 +161,8 @@ fun LogbookMonth(
                                 TextStyle.NARROW,
                                 Locale.getDefault()
                             ),
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.labelSmall
                         )
                         repeat(6) { col ->
                             val currentDate = remember { weekday.plusWeeks(col.toLong()) }
@@ -219,7 +220,10 @@ private fun DateIconButton(
                 modifier = Modifier,
                 contentAlignment = Alignment.Center
             ) {
-                Text(dayOfMonth, style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    text = dayOfMonth,
+                    style = MaterialTheme.typography.labelMedium
+                )
             }
         }
     }

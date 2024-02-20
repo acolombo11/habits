@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -67,17 +68,17 @@ fun AboutScreen(
                 style = MaterialTheme.typography.titleLarge
             )
 
-            Spacer(Modifier.size(10.dp))
+            Spacer(Modifier.height(16.dp))
 
             Text(
                 text = stringResource(R.string.about_version_text) + BuildConfig.VERSION_NAME + "\n"
                         + stringResource(id = R.string.about_creator) + "\n"
                         + stringResource(R.string.about_licence),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.bodyLarge,
             )
 
-            Spacer(Modifier.size(10.dp))
+            Spacer(Modifier.height(24.dp))
 
             Divider()
 

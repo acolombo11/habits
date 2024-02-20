@@ -73,7 +73,11 @@ fun HomeHabitCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
-                Text(text = habit.name, style = MaterialTheme.typography.titleLarge)
+                Text(
+                    modifier = Modifier.padding(horizontal = 6.dp),
+                    text = habit.name,
+                    style = MaterialTheme.typography.bodyLarge
+                )
                 Spacer(modifier = Modifier.weight(1f))
                 AnimatedContent(
                     targetState = Pair(habit.score, habit.streak),
@@ -81,10 +85,10 @@ fun HomeHabitCard(
                 ) { (score, streak) ->
                     if (showStatistic) {
                         Text(
-                            text = score.takeIf { showScore }?.let { "${it}%" }
+                            text = score.takeIf { showScore }?.let { "$it%"}
                                 ?: streak?.toString()
                                 ?: " ",
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleSmall
                         )
                     }
                 }
@@ -184,9 +188,13 @@ private fun HomeHabitCardDay(
     ) {
 
         Text(
-            modifier = Modifier.height(50.dp),
-            text = (weekday + "\n" + dayOfMonth),
-            style = MaterialTheme.typography.bodyLarge,
+            text = weekday,
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = dayOfMonth,
+            style = MaterialTheme.typography.labelLarge,
             textAlign = TextAlign.Center
         )
 
