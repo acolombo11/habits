@@ -148,6 +148,7 @@ private fun SettingsHeading(
     text: String
 ) {
     ListItem(
+        modifier = modifier,
         headlineContent = {
             Text(
                 text = text,

@@ -122,5 +122,5 @@ fun AboutListItem(
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 fun AboutScreenPreview() {
-    AboutScreen({})
+    AboutScreen {}
 }

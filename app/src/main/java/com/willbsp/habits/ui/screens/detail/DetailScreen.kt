@@ -96,28 +96,30 @@ fun DetailScreen(
                 ) {
 
                     Icon(imageVector = Icons.Default.CalendarToday, null)
-                    if (detailUiState.type == HabitFrequency.DAILY)
-                        Text(stringResource(R.string.detail_daily))
-                    else if (detailUiState.type == HabitFrequency.WEEKLY)
-                        Text(
+                    when (detailUiState.type) {
+                        HabitFrequency.DAILY -> Text(stringResource(R.string.detail_daily))
+                        HabitFrequency.WEEKLY -> Text(
                             text = pluralStringResource(
                                 id = R.plurals.detail_times_per_week,
                                 count = detailUiState.repeat,
                                 detailUiState.repeat
                             )
                         )
+                    }
 
                     Spacer(Modifier.weight(1f))
 
                     if (detailUiState.reminderDays.isNotEmpty()) {
                         Text(
-                            text = if (detailUiState.reminderDays.count() == 7)
-                                stringResource(id = R.string.detail_every_day) else
+                            text = if (detailUiState.reminderDays.count() == 7) {
+                                stringResource(id = R.string.detail_every_day)
+                            } else {
                                 pluralStringResource(
                                     id = R.plurals.detail_reminders,
                                     count = detailUiState.reminderDays.count(),
                                     detailUiState.reminderDays.count()
                                 )
+                            }
                         )
                         Icon(imageVector = Icons.Default.NotificationsActive, null)
                     }

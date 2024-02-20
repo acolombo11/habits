@@ -23,7 +23,7 @@ class LogbookViewModel @Inject constructor(
     private val habitRepository: HabitRepository,
     private val entryRepository: EntryRepository,
     private val clock: Clock,
-    private val getVirtualEntries: GetHabitsWithVirtualEntriesUseCase
+    getVirtualEntries: GetHabitsWithVirtualEntriesUseCase
 ) : ViewModel() {
 
     private var selectedHabitId: MutableStateFlow<Int> = MutableStateFlow(-1)

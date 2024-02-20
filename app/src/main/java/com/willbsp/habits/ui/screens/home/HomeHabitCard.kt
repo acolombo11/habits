@@ -4,7 +4,6 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,7 +48,7 @@ fun HomeHabitCard(
     showStatistic: Boolean,
     showScore: Boolean,
     todaysDate: LocalDate,
-    expandedInitialValue: Boolean = false
+    expandedInitialValue: Boolean = false,
 ) {
 
     var expanded by rememberSaveable { mutableStateOf(expandedInitialValue) }
@@ -59,85 +58,76 @@ fun HomeHabitCard(
         colors = CardDefaults.cardColors()
     ) {
 
-        Box(
-            modifier = Modifier.clickable { expanded = !expanded },
+        Column(
+            modifier = Modifier
+                .clickable { expanded = !expanded }
+                .padding(10.dp)
+                .fillMaxWidth()
+                .animateContentSize()
         ) {
 
-            Column(
+            Row(
                 modifier = Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth()
-                    .animateContentSize()
+                    .height(50.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
+
+                Text(text = habit.name, style = Typography.titleLarge)
+                Spacer(modifier = Modifier.weight(1f))
+                AnimatedContent(
+                    targetState = Pair(habit.score, habit.streak),
+                    label = "Statistic"
+                ) { (score, streak) ->
+                    if (showStatistic) {
+                        Text(
+                            text = score.takeIf { showScore }?.let { "${it}%" }
+                                ?: streak?.toString()
+                                ?: " ",
+                            style = Typography.titleLarge
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                HabitToggleButton(
+                    onCheckedChange = { completedOnClick(habit.id, todaysDate) },
+                    checked = habit.completed.any { it == todaysDate },
+                    checkedSecondary = habit.completedByWeek.any { it == todaysDate },
+                    contentDescription = "${todaysDate.dayOfWeek} ${todaysDate.dayOfMonth}"
+                )
+
+            }
+
+            if (expanded) {
+
+                Spacer(modifier = Modifier.height(10.dp))
 
                 Row(
                     modifier = Modifier
-                        .height(50.dp)
+                        .height(100.dp)
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
 
-                    Text(text = habit.name, style = Typography.titleLarge)
-                    Spacer(modifier = Modifier.weight(1f))
-                    AnimatedContent(
-                        targetState = Pair(habit.score, habit.streak),
-                        label = "Statistic"
-                    ) {
-                        if (showStatistic) {
-                            if (showScore) {
-                                Text(
-                                    text = if (habit.score != null) "${it.first}%" else " ",
-                                    style = Typography.titleLarge
-                                )
-                            } else {
-                                Text(
-                                    text = (it.second ?: " ").toString(),
-                                    style = Typography.titleLarge
-                                )
-                            }
-                        }
-                    }
-                    Spacer(modifier = Modifier.width(10.dp))
-                    HabitToggleButton(
-                        onCheckedChange = { completedOnClick(habit.id, todaysDate) },
-                        checked = habit.completed.any { it == todaysDate },
-                        checkedSecondary = habit.completedByWeek.any { it == todaysDate },
-                        contentDescription = "${todaysDate.dayOfWeek} ${todaysDate.dayOfMonth}"
+                    HomeHabitCardDayRow(
+                        habit = habit,
+                        todaysDate = todaysDate,
+                        completedOnClick = completedOnClick
                     )
-
-                }
-
-                if (expanded) {
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Row(
-                        modifier = Modifier
-                            .height(100.dp)
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
+                    Spacer(modifier = Modifier.weight(1f))
+                    IconButton(
+                        modifier = Modifier,
+                        onClick = { navigateToDetail(habit.id) }
                     ) {
-
-                        HomeHabitCardDayRow(
-                            habit = habit,
-                            todaysDate = todaysDate,
-                            completedOnClick = completedOnClick
+                        Icon(
+                            imageVector = Icons.Outlined.MoreHoriz,
+                            contentDescription = stringResource(R.string.home_detail)
                         )
-                        Spacer(modifier = Modifier.weight(1f))
-                        IconButton(
-                            modifier = Modifier,
-                            onClick = { navigateToDetail(habit.id) }
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.MoreHoriz,
-                                contentDescription = stringResource(R.string.home_detail)
-                            )
-                        }
-
                     }
-                }
 
+                }
             }
+
         }
 
     }
@@ -148,7 +138,7 @@ private fun HomeHabitCardDayRow(
     habit: HomeUiState.Habit,
     todaysDate: LocalDate,
     completedOnClick: (Int, LocalDate) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
 
     BoxWithConstraints {
@@ -182,7 +172,7 @@ private fun HomeHabitCardDay(
     onCheckedChange: (Boolean) -> Unit,
     completed: Boolean,
     completedByWeek: Boolean,
-    date: LocalDate
+    date: LocalDate,
 ) {
 
     val weekday = date.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())
