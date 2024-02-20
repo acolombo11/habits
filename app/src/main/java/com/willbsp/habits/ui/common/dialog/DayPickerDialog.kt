@@ -15,6 +15,7 @@ import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -117,7 +118,7 @@ private fun DayPickerCheckboxItem(
         Text(
             text = dayName,
             textAlign = TextAlign.Start,
-            style = Typography.labelLarge
+            style = MaterialTheme.typography.labelLarge
         )
     }
 

@@ -164,7 +164,7 @@ private fun HabitListStickyHeader(
         ) {
             Text(
                 text = text,
-                style = Typography.titleLarge,
+                style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier
                     .padding(start = 30.dp, bottom = 10.dp) // keep inline with habit titles
                     .fillMaxWidth()
@@ -187,7 +187,7 @@ private fun HabitListSubtitle(
         Box(modifier = modifier, contentAlignment = Alignment.Center) {
             Text(
                 text = text,
-                style = Typography.labelLarge
+                style = MaterialTheme.typography.labelLarge
             )
         }
     }

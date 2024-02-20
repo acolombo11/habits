@@ -66,7 +66,7 @@ fun AboutScreen(
 
             Text(
                 text = stringResource(id = R.string.app_name),
-                style = Typography.titleLarge
+                style = MaterialTheme.typography.titleLarge
             )
 
             Spacer(Modifier.size(10.dp))
@@ -76,7 +76,7 @@ fun AboutScreen(
                         + stringResource(id = R.string.about_creator) + "\n"
                         + stringResource(R.string.about_licence),
                 textAlign = TextAlign.Center,
-                style = Typography.titleMedium
+                style = MaterialTheme.typography.titleMedium
             )
 
             Spacer(Modifier.size(10.dp))

@@ -130,7 +130,7 @@ fun LogbookMonth(
                 Spacer(modifier.weight(1f))
                 Text(
                     text = monthText,
-                    style = Typography.headlineLarge
+                    style = MaterialTheme.typography.headlineLarge
                 )
                 Spacer(modifier.weight(1f))
                 IconButton(
@@ -220,7 +220,7 @@ private fun DateIconButton(
                 modifier = Modifier,
                 contentAlignment = Alignment.Center
             ) {
-                Text(dayOfMonth, style = Typography.bodyLarge)
+                Text(dayOfMonth, style = MaterialTheme.typography.bodyLarge)
             }
         }
     }

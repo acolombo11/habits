@@ -19,6 +19,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -73,7 +74,7 @@ fun HomeHabitCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
-                Text(text = habit.name, style = Typography.titleLarge)
+                Text(text = habit.name, style = MaterialTheme.typography.titleLarge)
                 Spacer(modifier = Modifier.weight(1f))
                 AnimatedContent(
                     targetState = Pair(habit.score, habit.streak),
@@ -84,7 +85,7 @@ fun HomeHabitCard(
                             text = score.takeIf { showScore }?.let { "${it}%" }
                                 ?: streak?.toString()
                                 ?: " ",
-                            style = Typography.titleLarge
+                            style = MaterialTheme.typography.titleLarge
                         )
                     }
                 }
@@ -186,7 +187,7 @@ private fun HomeHabitCardDay(
         Text(
             modifier = Modifier.height(50.dp),
             text = (weekday + "\n" + dayOfMonth),
-            style = Typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
 

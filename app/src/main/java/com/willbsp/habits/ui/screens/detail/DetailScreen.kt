@@ -286,14 +286,14 @@ fun CircularDetailScoreCard(
 
                 Text(
                     text = stringResource(id = R.string.detail_score),
-                    style = Typography.displayMedium,
+                    style = MaterialTheme.typography.displayMedium,
                     textAlign = TextAlign.Center
                 )
 
                 Text(
                     text = "${animatedScore.value.toInt()}%",
                     color = MaterialTheme.colorScheme.primary,
-                    style = Typography.displayLarge,
+                    style = MaterialTheme.typography.displayLarge,
                     textAlign = TextAlign.Center
                 )
 
@@ -336,7 +336,7 @@ fun DetailCard(
                         .fillMaxWidth(),
                     color = MaterialTheme.colorScheme.onSurface,
                     text = value,
-                    style = Typography.displayMedium,
+                    style = MaterialTheme.typography.displayMedium,
                     textAlign = TextAlign.Center
                 )
 
@@ -354,7 +354,7 @@ fun DetailCard(
                         .fillMaxWidth(),
                     text = title,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    style = Typography.headlineSmall,
+                    style = MaterialTheme.typography.headlineSmall,
                     textAlign = TextAlign.Center
                 )
 
