@@ -9,33 +9,33 @@
       android:translateY="50">
     <path
         android:pathData="M108,48h34v68h-34z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M108,134h34v68h-34z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M108,48H142V19L108,48Z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M52,96h34v69h-34z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M52,96H86V67L52,96Z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M142,202L142,196L108,196L108,231L142,202Z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M86,171L86,165L52,165L52,200L86,171Z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M164,79h34v69h-34z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M164,79H198V50L164,79Z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
     <path
         android:pathData="M198,154L198,148L164,148L164,183L198,154Z"
-        android:fillColor="#ffffff"/>
+        android:fillColor="@color/ic_launcher_foreground"/>
   </group>
 </vector>
