@@ -100,8 +100,8 @@ dependencies {
     implementation libs.androidx.hilt.navigation.compose
     androidTestImplementation libs.hilt.android.testing
 
-    testImplementation(project(":shared-test"))
-    androidTestImplementation(project(":shared-test"))
+    testImplementation projects.sharedTest
+    androidTestImplementation projects.sharedTest
 
 }
 
