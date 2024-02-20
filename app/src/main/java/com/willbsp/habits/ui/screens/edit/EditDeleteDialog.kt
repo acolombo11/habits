@@ -25,7 +25,12 @@ fun EditDeleteDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
         icon = { Icon(Icons.TwoTone.Delete, contentDescription = null) },
-        title = { Text(text = stringResource(R.string.edit_delete_habit)) },
+        title = {
+            Text(
+                text = stringResource(R.string.edit_delete_habit),
+                textAlign = TextAlign.Center
+            )
+        },
         text = {
             Text(
                 modifier = Modifier.fillMaxWidth(),

@@ -28,6 +28,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.willbsp.habits.R
 import com.willbsp.habits.common.DATABASE_EXPORT_FILE_NAME
@@ -227,8 +228,18 @@ fun SettingsImportDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
         icon = { Icon(Icons.TwoTone.ImportExport, contentDescription = null) },
-        title = { Text(text = stringResource(R.string.settings_import_data)) },
-        text = { Text(text = stringResource(R.string.settings_import_dialog_desc)) },
+        title = {
+            Text(
+                text = stringResource(R.string.settings_import_data),
+                textAlign = TextAlign.Center
+            )
+        },
+        text = {
+            Text(
+                text = stringResource(R.string.settings_import_dialog_desc),
+                textAlign = TextAlign.Center
+            )
+        },
         confirmButton = {
             Button(
                 onClick = onConfirm

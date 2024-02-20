@@ -25,7 +25,12 @@ fun NotificationPermissionDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
         icon = { Icon(Icons.TwoTone.Notifications, contentDescription = null) },
-        title = { Text(text = stringResource(R.string.notifications)) },
+        title = {
+            Text(
+                text = stringResource(R.string.notifications),
+                textAlign = TextAlign.Center
+            )
+        },
         text = {
             Text(
                 text = stringResource(R.string.notifications_desc),
@@ -33,8 +38,7 @@ fun NotificationPermissionDialog(
             )
         },
         confirmButton = {
-            if (showConfirmButton)
-                Button(onClick = onConfirm) { Text(stringResource(R.string.edit_confirm)) }
+            if (showConfirmButton) Button(onClick = onConfirm) { Text(stringResource(R.string.edit_confirm)) }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) { Text(stringResource(R.string.edit_dismiss)) }

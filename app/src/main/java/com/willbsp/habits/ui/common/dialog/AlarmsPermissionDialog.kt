@@ -24,7 +24,12 @@ fun AlarmsPermissionDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
         icon = { Icon(Icons.TwoTone.Alarm, contentDescription = null) },
-        title = { Text(text = stringResource(R.string.alarms_and_reminders)) },
+        title = {
+            Text(
+                text = stringResource(R.string.alarms_and_reminders),
+                textAlign = TextAlign.Center
+            )
+        },
         text = {
             Text(
                 text = stringResource(R.string.alarms_and_reminders_desc),
