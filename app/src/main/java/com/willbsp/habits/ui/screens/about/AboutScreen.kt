@@ -30,8 +30,6 @@ import androidx.compose.ui.unit.dp
 import com.willbsp.habits.BuildConfig
 import com.willbsp.habits.R
 import com.willbsp.habits.ui.common.DefaultHabitsAppTopBar
-import com.willbsp.habits.ui.theme.Typography
-
 
 @Composable
 fun AboutScreen(

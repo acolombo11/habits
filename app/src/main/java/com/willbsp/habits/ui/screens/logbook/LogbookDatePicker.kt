@@ -37,7 +37,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.willbsp.habits.R
-import com.willbsp.habits.ui.theme.Typography
 import kotlinx.coroutines.launch
 import java.time.DayOfWeek
 import java.time.LocalDate

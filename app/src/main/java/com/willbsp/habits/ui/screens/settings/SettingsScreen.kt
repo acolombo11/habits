@@ -34,7 +34,6 @@ import com.willbsp.habits.common.DATABASE_EXPORT_FILE_NAME
 import com.willbsp.habits.common.DATABASE_IMPORT_MIME_TYPES
 import com.willbsp.habits.ui.common.DefaultHabitsAppTopBar
 import com.willbsp.habits.ui.theme.HabitsTheme
-import com.willbsp.habits.ui.theme.Typography
 
 @Composable
 fun SettingsScreen(

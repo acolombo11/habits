@@ -25,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.willbsp.habits.R
 import com.willbsp.habits.data.model.HabitFrequency
-import com.willbsp.habits.ui.theme.Typography
 import java.time.LocalDate
 
 @OptIn(ExperimentalFoundationApi::class)

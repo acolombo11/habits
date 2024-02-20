@@ -28,7 +28,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.willbsp.habits.R
-import com.willbsp.habits.ui.theme.Typography
 import java.time.DayOfWeek
 import java.time.format.TextStyle
 import java.util.Locale
