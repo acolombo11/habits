@@ -1,17 +1,16 @@
 package com.willbsp.habits.ui.screens.edit
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.twotone.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -42,13 +41,24 @@ fun EditScreen(
     onValueChange: (HabitFormUiState) -> Unit,
     formUiState: HabitFormUiState
 ) {
+    var deleteDialogOpen by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             DefaultHabitsAppTopBar(
                 title = stringResource(R.string.edit_habit_title),
                 canNavigateBack = true,
-                navigateUp = navigateUp
+                navigateUp = navigateUp,
+                actions = {
+                    if (formUiState is HabitFormUiState.Data) {
+                        IconButton(onClick = { deleteDialogOpen = true }) {
+                            Icon(
+                                imageVector = Icons.TwoTone.Delete,
+                                contentDescription = stringResource(R.string.edit_habit_delete)
+                            )
+                        }
+                    }
+                }
             )
         },
         floatingActionButton = {
@@ -71,7 +81,6 @@ fun EditScreen(
                 var dayPickerState by remember { mutableStateOf(formUiState.reminderDays) }
                 var showTimePicker by remember { mutableStateOf(false) }
                 var showDayPicker by remember { mutableStateOf(false) }
-                var deleteDialogOpen by remember { mutableStateOf(false) }
 
                 Column(
                     modifier = modifier
@@ -90,15 +99,6 @@ fun EditScreen(
                         showNotificationPermissionDialog = { _ -> },
                         showAlarmsPermissionDialog = { _ -> }
                     )
-
-                    Spacer(Modifier.height(10.dp))
-
-                    FilledTonalButton(
-                        modifier = Modifier.fillMaxWidth(),
-                        onClick = { deleteDialogOpen = true }
-                    ) {
-                        Text(stringResource(R.string.edit_habit_delete))
-                    }
 
                 }
 
@@ -152,8 +152,7 @@ fun EditScreen(
 
             }
 
-            else -> {}
-
+            HabitFormUiState.Loading -> {}
         }
 
     }

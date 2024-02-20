@@ -2,7 +2,7 @@ package com.willbsp.habits.ui.screens.edit
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.twotone.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -24,7 +24,7 @@ fun EditDeleteDialog(
     AlertDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Filled.Delete, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.Delete, contentDescription = null) },
         title = { Text(text = stringResource(R.string.edit_delete_habit)) },
         text = {
             Text(
