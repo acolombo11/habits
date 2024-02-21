@@ -48,7 +48,7 @@ fun HomeHabitList(
     }
 
     LazyColumn(modifier = modifier) {
-        this.stickyHeader {
+        stickyHeader {
             HabitListStickyHeader(
                 visible = (!dailyCompleted || showCompleted) && dailyHabitsList.isNotEmpty(),
                 text = stringResource(R.string.home_today)
@@ -71,7 +71,7 @@ fun HomeHabitList(
                 showScore = homeUiState.showScore
             )
         }
-        this.stickyHeader {
+        stickyHeader {
             HabitListStickyHeader(
                 visible = (!weeklyCompleted || showCompleted) && weeklyHabitsList.isNotEmpty(),
                 text = stringResource(R.string.home_this_week)

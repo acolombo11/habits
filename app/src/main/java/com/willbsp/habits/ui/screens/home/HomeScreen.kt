@@ -6,13 +6,12 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Add
-import androidx.compose.material.icons.twotone.Done
 import androidx.compose.material.icons.twotone.DateRange
+import androidx.compose.material.icons.twotone.Done
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material.icons.twotone.VisibilityOff
@@ -60,7 +59,7 @@ fun HomeScreen(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = stringResource(id = R.string.app_name),)
+                    Text(text = stringResource(id = R.string.app_name))
                 },
                 navigationIcon = {
                     IconButton(onClick = navigateToLogbook) {
@@ -132,18 +131,15 @@ fun HomeScreen(
                     enter = fadeIn(),
                     exit = fadeOut(TweenSpec(delay = 200))
                 ) {
-                    Column(
+                    HomeHabitList(
                         modifier = modifier
                             .padding(innerPadding)
-                            .fillMaxSize()
-                    ) {
-                        HomeHabitList(
-                            homeUiState = homeUiState,
-                            completedOnClick = completedOnClick,
-                            navigateToDetail = navigateToDetail,
-                            showCompleted = showCompleted
-                        )
-                    }
+                            .fillMaxSize(),
+                        homeUiState = homeUiState,
+                        completedOnClick = completedOnClick,
+                        navigateToDetail = navigateToDetail,
+                        showCompleted = showCompleted
+                    )
                 }
 
             }
