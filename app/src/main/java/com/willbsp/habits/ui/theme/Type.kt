@@ -5,13 +5,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.willbsp.habits.R
 
 val Typography
     @Composable
     get() = MaterialTheme.typography.copy(
         displayLarge = MaterialTheme.typography.displayLarge.copy(
-            fontFamily = Fonts.Unbounded
+            fontFamily = Fonts.Unbounded,
+            fontSize = 48.sp, // Avoid timePicker selected time overflow
         ),
         displayMedium = MaterialTheme.typography.displayMedium.copy(
             fontFamily = Fonts.Unbounded
