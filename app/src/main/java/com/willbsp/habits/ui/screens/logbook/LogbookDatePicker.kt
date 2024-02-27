@@ -206,23 +206,19 @@ private fun DateIconButton(
     AnimatedContent(
         targetState = Pair(checked, colors),
         label = "DateIconButton"
-    ) { (cheked, colors) ->
+    ) { (checked, colors) ->
         FilledIconToggleButton(
             modifier = modifier,
-            checked = cheked,
+            checked = checked,
             enabled = enabled,
             onCheckedChange = { onCheckedChange(date) },
             colors = colors
         ) {
-            Box(
-                modifier = Modifier,
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = dayOfMonth,
-                    style = MaterialTheme.typography.labelMedium
-                )
-            }
+            Text(
+                text = dayOfMonth,
+                style = MaterialTheme.typography.labelMedium,
+                textAlign = TextAlign.Center
+            )
         }
     }
 
