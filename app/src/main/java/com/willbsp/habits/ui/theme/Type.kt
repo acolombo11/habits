@@ -16,19 +16,19 @@ val Typography
             fontSize = 48.sp, // Avoid timePicker selected time overflow
         ),
         displayMedium = MaterialTheme.typography.displayMedium.copy(
-            fontFamily = Fonts.Unbounded
+            fontFamily = Fonts.Unbounded,
         ),
         displaySmall = MaterialTheme.typography.displaySmall.copy(
-            fontFamily = Fonts.Unbounded
+            fontFamily = Fonts.Unbounded,
         ),
         headlineLarge = MaterialTheme.typography.headlineLarge.copy(
-            fontFamily = Fonts.Unbounded
+            fontFamily = Fonts.Unbounded,
         ),
         headlineMedium = MaterialTheme.typography.headlineMedium.copy(
-            fontFamily = Fonts.Unbounded
+            fontFamily = Fonts.Unbounded,
         ),
         headlineSmall = MaterialTheme.typography.headlineSmall.copy(
-            fontFamily = Fonts.Unbounded
+            fontFamily = Fonts.Unbounded,
         ),
         titleLarge = MaterialTheme.typography.titleLarge.copy(
             fontFamily = Fonts.Unbounded,
