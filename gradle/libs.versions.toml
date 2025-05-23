@@ -21,6 +21,7 @@ ksp = "2.1.21-2.0.1"
 kotlin = "2.1.21"
 minSdk = "26"
 targetSdk = "35"
+javaVersion = "21"
 
 [libraries]
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist-permissions" }

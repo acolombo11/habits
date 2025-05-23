@@ -84,18 +84,15 @@
     <string name="detail_every_day">Jeden Tag</string>
     <plurals name="detail_times_per_week">
         <item quantity="one">Einmal pro Woche</item>
-        <item quantity="two">Zweimal pro Woche</item>
         <item quantity="other">%d mal pro Woche</item>
     </plurals>
     <!--detail screen end-->
 
     <!--about screen start-->
     <string name="about_title">Über</string>
-    <string name="about_creator">Will Spooner (@willbsp)</string>
     <string name="about_view_source">Quellcode auf Github ansehen</string>
     <string name="about_report_an_issue">Einen Fehler melden</string>
     <string name="about_version_text">"Version "</string>
-    <string name="about_licence">Lizensiert unter GPLv3</string>
+    <string name="about_licence">Lizenziert unter GPLv3</string>
     <!--about screen end-->
-
 </resources>

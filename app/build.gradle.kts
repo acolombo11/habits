@@ -41,12 +41,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        val javaVersion = JavaVersion.toVersion(libs.versions.javaVersion.get().toInt())
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
 
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = libs.versions.javaVersion.get()
     }
 
     packaging {

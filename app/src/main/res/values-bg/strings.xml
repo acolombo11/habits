@@ -72,18 +72,15 @@
     <string name="detail_every_day">Всеки ден</string>
     <plurals name="detail_times_per_week">
         <item quantity="one">Веднъж седмично</item>
-        <item quantity="two">Два пъти седмично</item>
         <item quantity="other">%d пъти седмично</item>
     </plurals>
     <!--detail screen end-->
 
     <!--about screen start-->
     <string name="about_title">Относно</string>
-    <string name="about_creator">Will Spooner (@willbsp)</string>
     <string name="about_view_source">Изходен код в Github</string>
     <string name="about_report_an_issue">Съобщаване на дефект</string>
     <string name="about_version_text">"Издание "</string>
     <string name="about_licence">Лицензирано под GPLv3</string>
     <!--about screen end-->
-
 </resources>

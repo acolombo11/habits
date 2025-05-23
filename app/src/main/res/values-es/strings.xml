@@ -35,7 +35,7 @@
     <string name="home_all_completed_tick">Todo completado</string>
     <plurals name="home_habit_list_subtitle">
         <item quantity="one">%d hábito ya completado…</item>
-        <item quantity="other">%d hábitos ya completados…</item>
+        <item quantity="many">%d hábitos ya completados…</item>
     </plurals>
     <string name="home_no_habits">¡Añade un hábito con el botón de abajo!</string>
     <string name="home_show_completed">Mostrar completado</string>
@@ -85,14 +85,12 @@
     <string name="detail_every_day">Todos los días</string>
     <plurals name="detail_times_per_week">
         <item quantity="one">Una vez por semana</item>
-        <item quantity="two">Dos veces por semana</item>
-        <item quantity="other">%d veces por semana</item>
+        <item quantity="many">%d veces por semana</item>
     </plurals>
     <!--detail screen end-->
 
     <!--about screen start-->
     <string name="about_title">Acerca de</string>
-    <string name="about_creator">Will Spooner (@willbsp)</string>
     <string name="about_view_source">Ver el código fuente en Github</string>
     <string name="about_report_an_issue">Informar de un problema</string>
     <string name="about_version_text">Versión</string>
