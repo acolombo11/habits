@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.willbsp.habits.shared.test'
-    compileSdk libs.versions.compileSdk.get().toInteger()
+    compileSdk libs.versions.targetSdk.get().toInteger()
     defaultConfig {
         minSdk libs.versions.minSdk.get().toInteger()
     }
