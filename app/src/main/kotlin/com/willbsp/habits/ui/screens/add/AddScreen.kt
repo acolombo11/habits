@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.getSystemService
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -155,23 +156,23 @@ fun AddScreen(
         }
 
         if (showAlarmsPermissionDialog && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val activity = LocalContext.current as Activity
+            val context = LocalContext.current
             AlarmsPermissionDialog(
                 onDismiss = {
                     onValueChange(formUiState.copy(alarmPermissionDialogShown = true))
                     showAlarmsPermissionDialog = false
                 },
                 onConfirm = {
-                    val alarmManager =
-                        activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                    if (alarmManager.canScheduleExactAlarms()) {
+                    val alarmManager = context.getSystemService<AlarmManager>()
+                    if (alarmManager?.canScheduleExactAlarms() == true) {
                         onValueChange(formUiState.copy(alarmPermissionDialogShown = true))
                         showAlarmsPermissionDialog = false
                     } else {
-                        val intent = Intent().apply {
-                            action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
-                        }
-                        activity.startActivity(intent)
+                        context.startActivity(
+                            Intent().apply {
+                                action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+                            }
+                        )
                     }
                 }
             )
@@ -188,7 +189,7 @@ private fun AddHabitScreenPreview() {
             navigateUp = {},
             onSaveClick = {},
             onValueChange = {},
-            formUiState = HabitFormUiState.Data()
+            formUiState = HabitFormUiState.Data(),
         )
     }
 }
