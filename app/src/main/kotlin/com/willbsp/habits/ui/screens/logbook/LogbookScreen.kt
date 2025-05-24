@@ -37,7 +37,6 @@ fun LogbookScreen(
     completedOnClick: (LocalDate) -> Unit,
     habitOnClick: (Int) -> Unit,
 ) {
-
     Scaffold(
         topBar = {
             DefaultHabitsAppTopBar(
@@ -47,7 +46,6 @@ fun LogbookScreen(
             )
         },
     ) { innerPadding ->
-
         when (logbookUiState) {
 
             is LogbookUiState.SelectedHabit -> {
@@ -105,7 +103,6 @@ fun LogbookScreen(
                     text = R.string.logbook_empty_text
                 )
             }
-
         }
     }
 }

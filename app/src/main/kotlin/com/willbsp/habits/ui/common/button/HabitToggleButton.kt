@@ -21,7 +21,6 @@ fun HabitToggleButton(
     checkedSecondary: Boolean,
     contentDescription: String
 ) {
-
     val haptic = LocalHapticFeedback.current
     val icon = if (!checkedSecondary && !checked) {
         Icons.TwoTone.Close
@@ -44,7 +43,6 @@ fun HabitToggleButton(
             )
         }
     }
-
 }
 
 @Preview

@@ -13,25 +13,20 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DatabaseRepositoryModule {
-
     @Binds
     abstract fun bindHabitRepository(
         localHabitRepository: LocalHabitRepository
     ): HabitRepository
-
     @Binds
     abstract fun bindEntryRepository(
         localEntryRepository: LocalEntryRepository
     ): EntryRepository
-
     @Binds
     abstract fun bindHabitWithEntriesRepository(
         localHabitWithEntriesRepository: LocalHabitWithEntriesRepository
     ): HabitWithEntriesRepository
-
     @Binds
     abstract fun bindReminderRepository(
         localReminderRepository: LocalReminderRepository
     ): ReminderRepository
-
 }

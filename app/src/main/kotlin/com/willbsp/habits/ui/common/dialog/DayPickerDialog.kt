@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
+import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,8 +42,7 @@ fun DayPickerDialog(
     onCancel: () -> Unit,
     onConfirm: () -> Unit
 ) {
-
-    AlertDialog(modifier = modifier, onDismissRequest = onCancel) {
+    BasicAlertDialog(modifier = modifier, onDismissRequest = onCancel) {
         Surface(
             shape = AlertDialogDefaults.shape,
             color = AlertDialogDefaults.containerColor,
@@ -91,7 +91,6 @@ fun DayPickerDialog(
             }
         }
     }
-
 }
 
 @Composable
@@ -101,7 +100,6 @@ private fun DayPickerCheckboxItem(
     checked: Boolean,
     onCheckedChanged: (Boolean) -> (Unit)
 ) {
-
     val dayName = day.getDisplayName(TextStyle.FULL, Locale.getDefault())
 
     Row(
@@ -120,7 +118,6 @@ private fun DayPickerCheckboxItem(
             style = MaterialTheme.typography.labelLarge
         )
     }
-
 }
 
 @Preview

@@ -35,6 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.getSystemService
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -58,13 +59,11 @@ fun HabitForm(
     showAlarmsPermissionDialog: (Boolean) -> Unit,
     habitFormUiState: HabitFormUiState.Data
 ) {
-
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-
         OutlinedTextField(
             value = habitFormUiState.name,
             singleLine = true,
@@ -90,9 +89,7 @@ fun HabitForm(
             showNotificationPermissionDialog = showNotificationPermissionDialog,
             showAlarmsPermissionDialog = showAlarmsPermissionDialog
         )
-
     }
-
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
@@ -107,25 +104,22 @@ private fun HabitReminderDropdown(
     showNotificationPermissionDialog: (Boolean) -> Unit,
     showAlarmsPermissionDialog: (Boolean) -> Unit,
 ) {
-
     val reminderOptions = HabitReminderType.values()
     var reminderExpanded by remember { mutableStateOf(false) }
     var reminderSelected by remember { mutableStateOf(uiState.reminderType) }
 
-    val activity = LocalContext.current as Activity
-    val alarmManager = activity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    val context = LocalContext.current
+    val alarmManager = context.getSystemService<AlarmManager>()
 
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-
         ExposedDropdownMenuBox(
             modifier = Modifier,
             expanded = reminderExpanded,
             onExpandedChange = { reminderExpanded = !reminderExpanded }
         ) {
-
             OutlinedTextField(
                 modifier = Modifier
                     .menuAnchor()
@@ -153,11 +147,10 @@ private fun HabitReminderDropdown(
                     )
                 }
             }
-
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (!alarmManager.canScheduleExactAlarms() &&
+            if (alarmManager?.canScheduleExactAlarms() != true &&
                 uiState.alarmPermissionDialogShown &&
                 reminderSelected == HabitReminderType.NONE
             ) {
@@ -177,10 +170,8 @@ private fun HabitReminderDropdown(
         }
 
         AnimatedVisibility(visible = (reminderSelected == HabitReminderType.EVERYDAY) || (reminderSelected == HabitReminderType.SPECIFIC)) {
-
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                if (!alarmManager.canScheduleExactAlarms()) {
+                if (alarmManager?.canScheduleExactAlarms() != true) {
 
                     if (!uiState.alarmPermissionDialogShown) {
                         SideEffect {
@@ -206,10 +197,8 @@ private fun HabitReminderDropdown(
                                 onValueChange(uiState.copy(reminderType = reminderSelected))
                             }
                         }
-
                     }
                 }
-
             }
 
             Column(
@@ -229,8 +218,6 @@ private fun HabitReminderDropdown(
                     )
                 }
             }
-
-
         }
     }
 }
@@ -241,7 +228,6 @@ private fun HabitReminderTimeField(
     showTimePicker: () -> Unit,
     time: LocalTime
 ) {
-
     val formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
     val source = remember { MutableInteractionSource() }
 
@@ -265,7 +251,6 @@ private fun HabitReminderTimeField(
             showTimePicker()
         }
     }
-
 }
 
 @Composable
@@ -275,7 +260,6 @@ private fun HabitReminderDayField(
     isInvalid: Boolean,
     days: Set<DayOfWeek>
 ) {
-
     val source = remember { MutableInteractionSource() }
 
     OutlinedTextField(
@@ -303,7 +287,6 @@ private fun HabitReminderDayField(
             showDayPicker()
         }
     }
-
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -322,7 +305,6 @@ private fun HabitFrequencyDropdown(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-
         ExposedDropdownMenuBox(
             expanded = frequencyExpanded,
             onExpandedChange = { frequencyExpanded = !frequencyExpanded },
@@ -361,7 +343,6 @@ private fun HabitFrequencyDropdown(
         var selectedRepeat by remember { mutableIntStateOf(uiState.repeat) }
 
         AnimatedVisibility(visible = uiState.frequency == HabitFrequency.WEEKLY) {
-
             ExposedDropdownMenuBox(
                 expanded = repeatExpanded,
                 onExpandedChange = { repeatExpanded = !repeatExpanded },
@@ -394,11 +375,8 @@ private fun HabitFrequencyDropdown(
                     }
                 }
             }
-
         }
-
     }
-
 }
 
 @Preview(showBackground = true)

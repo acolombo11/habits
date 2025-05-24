@@ -25,7 +25,6 @@ class LogbookViewModel @Inject constructor(
     private val clock: Clock,
     getVirtualEntries: GetHabitsWithVirtualEntriesUseCase
 ) : ViewModel() {
-
     private var selectedHabitId: MutableStateFlow<Int> = MutableStateFlow(-1)
 
     val uiState: StateFlow<LogbookUiState> = getVirtualEntries()
@@ -76,5 +75,4 @@ class LogbookViewModel @Inject constructor(
     companion object {
         const val TIMEOUT_MILLIS = 5_000L
     }
-
 }

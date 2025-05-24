@@ -9,13 +9,8 @@ import javax.inject.Inject
 class CalculateStatisticsUseCase @Inject constructor(
     private val entryRepository: EntryRepository
 ) {
-
-    operator fun invoke(habitId: Int): Flow<Statistics> {
-
-        return entryRepository.getAllEntriesStream(habitId).map { list ->
+    operator fun invoke(habitId: Int): Flow<Statistics> =
+        entryRepository.getAllEntriesStream(habitId).map { list ->
             Statistics(list.size, entryRepository.getOldestEntry(habitId)?.date)
         }
-
-    }
-
 }

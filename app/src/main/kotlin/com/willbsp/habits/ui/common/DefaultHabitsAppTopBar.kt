@@ -18,7 +18,6 @@ fun DefaultHabitsAppTopBar(
     actions: @Composable RowScope.() -> Unit = {},
     navigateUp: () -> Unit = {}
 ) {
-
     CenterAlignedTopAppBar(
         title = { Text(text = title) },
         modifier = modifier,
@@ -34,5 +33,4 @@ fun DefaultHabitsAppTopBar(
         },
         actions = actions
     )
-
 }

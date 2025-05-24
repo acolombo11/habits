@@ -41,13 +41,11 @@ fun HabitsNavigationGraph(
         startDestination = HabitsNavigationDestination.HOME.route,
         modifier = modifier
     ) {
-
         composable(
             route = HabitsNavigationDestination.HOME.route,
             enterTransition = { fadeIn() },
             exitTransition = { fadeOut() }
         ) {
-
             val viewModel = hiltViewModel<HomeViewModel>()
             val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -70,7 +68,6 @@ fun HabitsNavigationGraph(
                     viewModel.toggleEntry(id, date)
                 }
             )
-
         }
 
         composable(
@@ -88,7 +85,6 @@ fun HabitsNavigationGraph(
                 )
             }
         ) {
-
             val viewModel = hiltViewModel<AddViewModel>()
             val state = viewModel.uiState
 
@@ -106,7 +102,6 @@ fun HabitsNavigationGraph(
                 },
                 formUiState = state
             )
-
         }
 
         composable(
@@ -131,7 +126,6 @@ fun HabitsNavigationGraph(
                 }
             }
         ) {
-
             val viewModel = hiltViewModel<DetailViewModel>()
             val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -144,7 +138,6 @@ fun HabitsNavigationGraph(
                     navController.navigate(HabitsNavigationDestination.EDIT.route + habitId)
                 }
             )
-
         }
 
         composable(
@@ -164,7 +157,6 @@ fun HabitsNavigationGraph(
             }
 
         ) {
-
             val viewModel = hiltViewModel<EditViewModel>()
             val state = viewModel.uiState
 
@@ -185,7 +177,6 @@ fun HabitsNavigationGraph(
                 },
                 formUiState = state
             )
-
         }
 
         composable(
@@ -203,7 +194,6 @@ fun HabitsNavigationGraph(
                 )
             }
         ) {
-
             val viewModel = hiltViewModel<LogbookViewModel>()
             val state by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -219,7 +209,6 @@ fun HabitsNavigationGraph(
                     navController.navigateUp()
                 }
             )
-
         }
 
         composable(
@@ -242,9 +231,7 @@ fun HabitsNavigationGraph(
                     )
                 }
             }
-
         ) {
-
             val context = LocalContext.current
             val viewModel = hiltViewModel<SettingsViewModel>()
             val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -283,7 +270,6 @@ fun HabitsNavigationGraph(
                 },
                 settingsUiState = state
             )
-
         }
 
         composable(
@@ -301,14 +287,11 @@ fun HabitsNavigationGraph(
                 )
             }
         ) {
-
             AboutScreen(
                 navigateUp = {
                     navController.navigateUp()
                 }
             )
-
         }
-
     }
 }

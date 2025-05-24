@@ -26,10 +26,8 @@ sealed class HomeUiState {
         val completed: List<LocalDate>,
         val completedByWeek: List<LocalDate>
     ) {
-
         fun hasBeenCompleted(date: LocalDate): Boolean {
             return when (type) {
-
                 HabitFrequency.DAILY -> {
                     completed.contains(date)
                 }
@@ -39,10 +37,7 @@ sealed class HomeUiState {
                         (date.with(DayOfWeek.MONDAY)..date.with(DayOfWeek.SUNDAY)).toList()
                     (completed + completedByWeek).containsAll(weekDates) || completed.contains(date)
                 }
-
             }
         }
-
     }
-
 }

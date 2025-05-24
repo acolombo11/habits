@@ -28,7 +28,6 @@ class HomeViewModel @Inject constructor(
     getHabitsWithVirtualEntries: GetHabitsWithVirtualEntriesUseCase,
     settingsRepository: SettingsRepository,
 ) : ViewModel() {
-
     val uiState: StateFlow<HomeUiState> =
         combine(
             getHabitsWithVirtualEntries(),
@@ -87,5 +86,4 @@ class HomeViewModel @Inject constructor(
     companion object {
         const val TIMEOUT_MILLIS = 5_000L
     }
-
 }

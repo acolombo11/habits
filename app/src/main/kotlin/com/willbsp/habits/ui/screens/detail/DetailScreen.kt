@@ -58,7 +58,6 @@ fun DetailScreen(
     navigateUp: () -> Unit,
     navigateToEditHabit: (Int) -> Unit
 ) {
-
     Scaffold(
         topBar = {
             DefaultHabitsAppTopBar(
@@ -77,7 +76,6 @@ fun DetailScreen(
 
         }
     ) { innerPadding ->
-
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
@@ -87,9 +85,10 @@ fun DetailScreen(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             item {
-
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(5.dp)
                 ) {
 
@@ -121,24 +120,19 @@ fun DetailScreen(
                         )
                         Icon(imageVector = Icons.TwoTone.NotificationsActive, null)
                     }
-
                 }
-
             }
 
             item {
-
                 CircularDetailScoreCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(300.dp),
                     score = detailUiState.score.toFloat()
                 )
-
             }
 
             item {
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -158,29 +152,26 @@ fun DetailScreen(
                         title = stringResource(R.string.detail_longest_streak),
                         value = detailUiState.longestStreak.toString()
                     )
-
                 }
-
             }
 
             item {
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
 
-                    val startedDate =
-                        if (detailUiState.started == null) stringResource(R.string.detail_not_started)
-                        else {
-                            "${detailUiState.started.dayOfMonth} ${
-                                detailUiState.started.month.getDisplayName(
-                                    TextStyle.SHORT_STANDALONE,
-                                    Locale.getDefault()
-                                )
-                            }"
-                        }
+                    val startedDate = if (detailUiState.started == null) {
+                        stringResource(R.string.detail_not_started)
+                    } else {
+                        "${detailUiState.started.dayOfMonth} ${
+                            detailUiState.started.month.getDisplayName(
+                                TextStyle.SHORT_STANDALONE,
+                                Locale.getDefault()
+                            )
+                        }"
+                    }
 
                     DetailCard(
                         modifier = modifier.weight(1f),
@@ -193,26 +184,18 @@ fun DetailScreen(
                         title = stringResource(R.string.detail_total),
                         value = detailUiState.total.toString()
                     )
-
                 }
-
             }
-
             item { Spacer(Modifier.height(10.dp)) }
-
         }
-
     }
-
 }
-
 
 @Composable
 fun CircularDetailScoreCard(
     modifier: Modifier = Modifier,
     score: Float,
 ) {
-
     var initialScore by rememberSaveable {
         mutableFloatStateOf(0f)
     }
@@ -229,12 +212,10 @@ fun CircularDetailScoreCard(
     OutlinedCard(
         modifier = modifier,
     ) {
-
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-
             val foregroundColor = MaterialTheme.colorScheme.primary
             val inactiveColor = MaterialTheme.colorScheme.primaryContainer
             val lineThickness = 20.dp
@@ -245,7 +226,6 @@ fun CircularDetailScoreCard(
                     .fillMaxSize()
                     .padding(25.dp)
             ) {
-
                 val angle = (animatedScore.value) * 360 / 100
                 val size = Size(this.size.minDimension, this.size.minDimension)
 
@@ -261,7 +241,6 @@ fun CircularDetailScoreCard(
                         y = this.center.y - (size.height / 2)
                     )
                 )
-
                 drawArc(
                     color = foregroundColor,
                     startAngle = -90f,
@@ -274,13 +253,11 @@ fun CircularDetailScoreCard(
                         y = this.center.y - (size.height / 2)
                     )
                 )
-
             }
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
                 Text(
                     text = stringResource(id = R.string.detail_score),
                     style = MaterialTheme.typography.headlineMedium,
@@ -293,13 +270,9 @@ fun CircularDetailScoreCard(
                     style = MaterialTheme.typography.displayLarge,
                     textAlign = TextAlign.Center
                 )
-
             }
-
         }
-
     }
-
 }
 
 @Composable
@@ -308,7 +281,6 @@ fun DetailCard(
     title: String,
     value: String,
 ) {
-
     OutlinedCard(
         modifier = modifier,
     ) {
@@ -318,7 +290,6 @@ fun DetailCard(
                 .height(160.dp),
             verticalArrangement = Arrangement.Center
         ) {
-
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 10.dp))
@@ -326,8 +297,6 @@ fun DetailCard(
                     .weight(0.7f),
                 contentAlignment = Alignment.Center
             ) {
-
-
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -336,7 +305,6 @@ fun DetailCard(
                     style = MaterialTheme.typography.displaySmall,
                     textAlign = TextAlign.Center
                 )
-
             }
 
             Box(
@@ -345,7 +313,6 @@ fun DetailCard(
                     .weight(0.3f),
                 contentAlignment = Alignment.Center
             ) {
-
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -354,12 +321,9 @@ fun DetailCard(
                     style = MaterialTheme.typography.titleSmall,
                     textAlign = TextAlign.Center
                 )
-
             }
-
         }
     }
-
 }
 
 @Preview(showBackground = true, showSystemUi = true)

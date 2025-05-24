@@ -93,9 +93,7 @@ fun AboutScreen(
                 icon = Icons.TwoTone.BugReport,
                 text = stringResource(id = R.string.about_report_an_issue)
             )
-
         }
-
     }
 }
 

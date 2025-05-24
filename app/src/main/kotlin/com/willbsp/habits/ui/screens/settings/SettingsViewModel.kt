@@ -21,7 +21,6 @@ class SettingsViewModel @Inject constructor(
     private val export: ExportDatabaseUseCase,
     private val import: ImportDatabaseUseCase
 ) : ViewModel() {
-
     val uiState: StateFlow<SettingsUiState> = settingsRepository.getSettingsMap().map {
         SettingsUiState(
             showStatistic =
@@ -73,5 +72,4 @@ class SettingsViewModel @Inject constructor(
     companion object {
         const val TIMEOUT_MILLIS = 5_000L
     }
-
 }

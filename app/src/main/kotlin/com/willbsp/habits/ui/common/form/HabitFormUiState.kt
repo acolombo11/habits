@@ -10,7 +10,7 @@ import java.time.LocalTime
 
 sealed class HabitFormUiState {
 
-    object Loading : HabitFormUiState()
+    data object Loading : HabitFormUiState()
 
     data class Data(
         val name: String = "",
@@ -24,28 +24,18 @@ sealed class HabitFormUiState {
         val notificationPermissionDialogShown: Boolean = false,
         val alarmPermissionDialogShown: Boolean = false
     ) : HabitFormUiState() {
+        fun isDaysValid() = !(reminderType == HabitReminderType.SPECIFIC && reminderDays.isEmpty())
 
-
-        fun isDaysValid(): Boolean {
-            return !(reminderType == HabitReminderType.SPECIFIC && reminderDays.isEmpty())
-        }
-
-        fun isNameValid(): Boolean {
-            return (name.length in HABIT_NAME_MIN_CHARACTER_LIMIT..HABIT_NAME_MAX_CHARACTER_LIMIT &&
-                    !name.contains("\n"))
-        }
-
+        fun isNameValid() = !name.contains("\n") &&
+                name.length in HABIT_NAME_MIN_CHARACTER_LIMIT..HABIT_NAME_MAX_CHARACTER_LIMIT
     }
-
 }
 
-fun HabitFormUiState.Data.toHabitData(): HabitData {
-    return HabitData(
-        name = this.name,
-        frequency = this.frequency,
-        repeat = this.repeat,
-        reminderType = this.reminderType,
-        reminderTime = this.reminderTime,
-        reminderDays = this.reminderDays
-    )
-}
+fun HabitFormUiState.Data.toHabitData() = HabitData(
+    name = name,
+    frequency = frequency,
+    repeat = repeat,
+    reminderType = reminderType,
+    reminderTime = reminderTime,
+    reminderDays = reminderDays
+)

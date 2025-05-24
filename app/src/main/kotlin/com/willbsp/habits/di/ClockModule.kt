@@ -9,8 +9,6 @@ import java.time.Clock
 @Module
 @InstallIn(SingletonComponent::class)
 class ClockModule {
-
     @Provides
     fun provideClock(): Clock = Clock.systemDefaultZone()
-
 }

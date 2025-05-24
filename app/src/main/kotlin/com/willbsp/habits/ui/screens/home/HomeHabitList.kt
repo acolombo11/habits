@@ -36,7 +36,6 @@ fun HomeHabitList(
     showCompleted: Boolean,
     modifier: Modifier = Modifier
 ) {
-
     val (dailyHabitsList, weeklyHabitsList) = remember(homeUiState.habits) {
         homeUiState.habits.partition { it.type == HabitFrequency.DAILY }
     }
@@ -113,7 +112,6 @@ fun HomeHabitList(
             Spacer(modifier.height(100.dp))
         }
     }
-
 }
 
 @Composable
@@ -132,7 +130,6 @@ private fun HabitListCard(
         exit = shrinkVertically(animationSpec = TweenSpec(delay = 200)),
         enter = expandVertically()
     ) {
-
         HomeHabitCard(
             modifier = modifier,
             habit = habit,
@@ -142,7 +139,6 @@ private fun HabitListCard(
             showScore = showScore,
             todaysDate = todaysDate
         )
-
     }
 }
 

@@ -48,7 +48,6 @@ fun SettingsScreen(
     onImportPressed: (Uri?) -> Unit,
     settingsUiState: SettingsUiState
 ) {
-
     val exportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.CreateDocument("*/*"),
         onResult = onExportPressed
@@ -85,7 +84,6 @@ fun SettingsScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-
             SettingsHeading(text = stringResource(id = R.string.settings_home))
 
             SettingToggle(
@@ -96,14 +94,12 @@ fun SettingsScreen(
             )
 
             AnimatedVisibility(visible = settingsUiState.showStatistic) {
-
                 SettingToggle(
                     checked = settingsUiState.showScore,
                     onCheckedChange = onShowScorePressed,
                     title = R.string.settings_scores_on_home,
                     subtitle = R.string.settings_scores_on_home_desc
                 )
-
             }
 
             SettingToggle(
@@ -126,7 +122,6 @@ fun SettingsScreen(
                 title = R.string.settings_import_database,
                 subtitle = R.string.settings_import_database_desc
             )
-
         }
 
         if (importDialogOpen.value) {
@@ -138,7 +133,6 @@ fun SettingsScreen(
                 }
             )
         }
-
     }
 }
 

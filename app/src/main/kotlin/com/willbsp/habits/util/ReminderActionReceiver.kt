@@ -15,7 +15,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReminderActionReceiver : BroadcastReceiver() {
-
     @Inject
     lateinit var reminderRepository: ReminderRepository
 
@@ -40,9 +39,6 @@ class ReminderActionReceiver : BroadcastReceiver() {
             val completed = intent.getBooleanExtra("completed", false)
             entryRepository.setEntry(reminder.habitId, LocalDate.now(clock), completed)
         }
-
         notificationManager.cancel(reminderId)
-
     }
-
 }

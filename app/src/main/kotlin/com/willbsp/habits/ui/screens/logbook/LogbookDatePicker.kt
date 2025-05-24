@@ -44,7 +44,6 @@ import kotlin.math.absoluteValue
 private val MAX_WIDTH = 450.dp
 private val MAX_HEIGHT = 350.dp
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LogbookDatePicker(
     modifier: Modifier = Modifier,
@@ -52,7 +51,6 @@ fun LogbookDatePicker(
     dateOnClick: (LocalDate) -> Unit,
     pages: Int = 1200,
 ) {
-
     val pagerState = rememberPagerState(
         initialPage = pages - 2
     ) { pages }
@@ -88,10 +86,8 @@ fun LogbookDatePicker(
             pagerState = pagerState
         )
     }
-
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LogbookMonth(
     modifier: Modifier = Modifier,
@@ -101,7 +97,6 @@ fun LogbookMonth(
     pagerState: PagerState,
     logbookUiState: LogbookUiState.SelectedHabit,
 ) {
-
     val startDate = remember { date.withDayOfMonth(1).with(DayOfWeek.MONDAY) }
     val scope = rememberCoroutineScope()
     val today = remember { logbookUiState.todaysDate }
@@ -110,7 +105,6 @@ fun LogbookMonth(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-
         val height = minOf(maxHeight, MAX_HEIGHT)
         val width = minOf(maxWidth, MAX_WIDTH)
 
@@ -118,11 +112,9 @@ fun LogbookMonth(
             modifier = Modifier.width(width),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             val monthText = remember {
                 "${date.month.getDisplayName(TextStyle.FULL, Locale.getDefault())} ${date.year}"
             }
-
             Text(
                 text = monthText,
                 textAlign = TextAlign.Center,
@@ -178,9 +170,7 @@ fun LogbookMonth(
                 }
             }
         }
-
     }
-
 }
 
 @Composable
@@ -192,7 +182,6 @@ private fun DateIconButton(
     enabled: Boolean,
     onCheckedChange: (LocalDate) -> (Unit),
 ) {
-
     val dayOfMonth = remember { date.dayOfMonth.toString() }
     val colors = if (checkedSecondary) {
         IconButtonDefaults.filledIconToggleButtonColors(
@@ -221,7 +210,6 @@ private fun DateIconButton(
             )
         }
     }
-
 }
 
 /*@Preview(showBackground = true)

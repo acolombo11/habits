@@ -18,7 +18,6 @@ class ImportDatabaseUseCase(
     ) : this(databaseUtils, Dispatchers.IO)
 
     suspend operator fun invoke(input: InputStream): Boolean? = withContext(ioDispatcher) {
-
         val databaseFile = databaseUtils.getDatabasePath()
 
         if (databaseFile.exists()) {
@@ -38,14 +37,10 @@ class ImportDatabaseUseCase(
                 input.close()
                 return@withContext false
             }
-
             input.close()
             return@withContext true
-
         }
-
         return@withContext null
-
     }
 
     private fun deleteDatabaseFiles(databaseFile: File) {
@@ -59,5 +54,4 @@ class ImportDatabaseUseCase(
         }
         databaseFile.deleteRecursively()
     }
-
 }

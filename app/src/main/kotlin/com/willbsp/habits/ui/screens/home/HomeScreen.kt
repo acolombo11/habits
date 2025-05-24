@@ -51,7 +51,6 @@ fun HomeScreen(
     navigateToSettings: () -> Unit,
     homeUiState: HomeUiState
 ) {
-
     var showCompleted by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
@@ -95,7 +94,6 @@ fun HomeScreen(
             )
         }
     ) { innerPadding ->
-
         when (homeUiState) {
             is HomeUiState.Empty -> {
                 FullscreenHint(
@@ -107,7 +105,6 @@ fun HomeScreen(
             }
 
             is HomeUiState.Habits -> {
-
                 val allCompleted = remember(homeUiState) {
                     homeUiState.habits.all { it.hasBeenCompleted(homeUiState.todaysDate) }
                 }
@@ -141,7 +138,6 @@ fun HomeScreen(
                         showCompleted = showCompleted
                     )
                 }
-
             }
         }
     }

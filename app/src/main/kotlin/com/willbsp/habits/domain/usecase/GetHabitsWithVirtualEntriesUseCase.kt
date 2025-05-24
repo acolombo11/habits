@@ -18,10 +18,8 @@ class GetHabitsWithVirtualEntriesUseCase @Inject constructor(
     val habitRepository: HabitRepository,
     val getVirtualEntries: GetVirtualEntriesUseCase
 ) {
-
     @OptIn(ExperimentalCoroutinesApi::class)
     operator fun invoke(): Flow<List<HabitWithVirtualEntries>> {
-
         return habitRepository.getAllHabitsStream().flatMapLatest { habitList ->
 
             val flows = habitList.map { habit ->
@@ -29,14 +27,10 @@ class GetHabitsWithVirtualEntriesUseCase @Inject constructor(
                     HabitWithVirtualEntries(habit, virtualEntries)
                 }
             }
-
             if (flows.isEmpty())
                 return@flatMapLatest flowOf(listOf<HabitWithVirtualEntries>())
 
             return@flatMapLatest combine(flows) { it.toList() }
-
         }
-
     }
-
 }

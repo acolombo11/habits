@@ -69,9 +69,7 @@ fun EditScreen(
             )
         }
     ) { innerPadding ->
-
         when (formUiState) {
-
             is HabitFormUiState.Data -> {
 
                 val timePickerState = rememberTimePickerState(
@@ -88,7 +86,6 @@ fun EditScreen(
                         .padding(horizontal = 10.dp)
                         .fillMaxSize()
                 ) {
-
                     HabitForm(
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -99,7 +96,6 @@ fun EditScreen(
                         showNotificationPermissionDialog = { _ -> },
                         showAlarmsPermissionDialog = { _ -> }
                     )
-
                 }
 
                 if (showTimePicker) {
@@ -149,12 +145,10 @@ fun EditScreen(
                         }
                     )
                 }
-
             }
 
             HabitFormUiState.Loading -> {}
         }
-
     }
 }
 

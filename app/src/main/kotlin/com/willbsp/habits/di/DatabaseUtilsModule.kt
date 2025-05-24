@@ -10,10 +10,8 @@ import dagger.hilt.android.components.ViewModelComponent
 @Module
 @InstallIn(ViewModelComponent::class)
 abstract class DatabaseUtilsModule {
-
     @Binds
     abstract fun bindDatabaseUtils(
         localDatabaseUtils: LocalDatabaseUtils
     ): DatabaseUtils
-
 }

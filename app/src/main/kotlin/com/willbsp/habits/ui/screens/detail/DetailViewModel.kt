@@ -70,5 +70,4 @@ class DetailViewModel @Inject constructor(
         const val TIMEOUT_MILLIS = 5_000L
         private const val HABIT_ID_SAVED_STATE_KEY = "habitId"
     }
-
 }

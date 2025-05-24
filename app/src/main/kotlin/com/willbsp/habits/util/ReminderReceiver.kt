@@ -21,7 +21,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReminderReceiver : BroadcastReceiver() {
-
     @Inject
     lateinit var reminderRepository: ReminderRepository
 
@@ -38,7 +37,6 @@ class ReminderReceiver : BroadcastReceiver() {
     lateinit var clock: Clock
 
     override fun onReceive(context: Context, intent: Intent) = goAsync {
-
         val notificationManager = ContextCompat.getSystemService(
             context,
             NotificationManager::class.java
@@ -47,7 +45,6 @@ class ReminderReceiver : BroadcastReceiver() {
         val reminderId = intent.getIntExtra("reminderId", -1)
 
         if (reminderId != -1) {
-
             val reminder =
                 reminderRepository.getReminderStream(reminderId).first() ?: return@goAsync
 
@@ -60,33 +57,33 @@ class ReminderReceiver : BroadcastReceiver() {
             }
 
             reminderManager.scheduleReminder(reminder.id, reminder.day, reminder.time)
-
         }
-
     }
 
     private suspend fun NotificationManager.sendReminderNotification(
         context: Context,
         reminderId: Int
     ) {
-
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent =
-            PendingIntent.getActivity(context, reminderId, intent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getActivity(
+            context,
+            reminderId,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
         val completedIntent = Intent(context, ReminderActionReceiver::class.java).apply {
             putExtra("reminderId", reminderId)
             putExtra("completed", true)
         }
-        val completedPendingIntent =
-            PendingIntent.getBroadcast(
-                context,
-                reminderId,
-                completedIntent,
-                PendingIntent.FLAG_IMMUTABLE
-            )
+        val completedPendingIntent = PendingIntent.getBroadcast(
+            context,
+            reminderId,
+            completedIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
         val completedAction = NotificationCompat.Action(
             R.drawable.ic_check,
             context.getString(R.string.notification_yes),
@@ -97,13 +94,12 @@ class ReminderReceiver : BroadcastReceiver() {
             putExtra("reminderId", reminderId)
             putExtra("completed", false)
         }
-        val notCompletedPendingIntent =
-            PendingIntent.getBroadcast(
-                context,
-                -reminderId,
-                notCompletedIntent,
-                PendingIntent.FLAG_IMMUTABLE
-            )
+        val notCompletedPendingIntent = PendingIntent.getBroadcast(
+            context,
+            -reminderId,
+            notCompletedIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
         val notCompletedAction = NotificationCompat.Action(
             R.drawable.ic_cross,
             context.getString(R.string.notification_no),
@@ -114,19 +110,16 @@ class ReminderReceiver : BroadcastReceiver() {
         val habitName = habitRepository.getHabit(reminder.habitId)?.name
 
         if (habitName != null) {
-            val builder =
-                NotificationCompat.Builder(context, REMINDER_NOTIFICATION_CHANNEL_ID)
-                    .setContentTitle(habitName)
-                    .setContentText(context.getString(R.string.reminder_notification_desc))
-                    .setSmallIcon(R.drawable.icon)
-                    .setContentIntent(pendingIntent)
-                    .setAllowSystemGeneratedContextualActions(false)
-                    .addAction(completedAction)
-                    .addAction(notCompletedAction)
-                    .setAutoCancel(true)
+            val builder = NotificationCompat.Builder(context, REMINDER_NOTIFICATION_CHANNEL_ID)
+                .setContentTitle(habitName)
+                .setContentText(context.getString(R.string.reminder_notification_desc))
+                .setSmallIcon(R.drawable.icon)
+                .setContentIntent(pendingIntent)
+                .setAllowSystemGeneratedContextualActions(false)
+                .addAction(completedAction)
+                .addAction(notCompletedAction)
+                .setAutoCancel(true)
             notify(reminderId, builder.build())
         }
-
     }
-
 }

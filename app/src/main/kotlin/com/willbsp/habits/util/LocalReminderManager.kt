@@ -32,7 +32,6 @@ class LocalReminderManager @Inject constructor(
     }
 
     override fun scheduleReminder(reminderId: Int, day: DayOfWeek, time: LocalTime) {
-
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -43,7 +42,9 @@ class LocalReminderManager @Inject constructor(
         intent.putExtra("reminderId", reminderId)
 
         val pendingIntent = PendingIntent.getBroadcast(
-            context.applicationContext, reminderId, intent,
+            context.applicationContext,
+            reminderId,
+            intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
@@ -54,16 +55,14 @@ class LocalReminderManager @Inject constructor(
         }
 
         // if date is in the past, schedule for next week
-        if (Calendar.getInstance(Locale.getDefault())
+        if (
+            Calendar.getInstance(Locale.getDefault())
                 .apply { add(Calendar.MINUTE, 1) }.timeInMillis - reminderTime.timeInMillis > 0
-        ) {
-            reminderTime.add(Calendar.WEEK_OF_YEAR, 1)
-        }
+        ) reminderTime.add(Calendar.WEEK_OF_YEAR, 1)
 
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP, reminderTime.timeInMillis, pendingIntent
         )
-
     }
 
     override suspend fun unscheduleAllReminders(habitId: Int) {
@@ -87,5 +86,4 @@ class LocalReminderManager @Inject constructor(
     private fun DayOfWeek.toCalendarDay(): Int {
         return (value % 7) + 1
     }
-
 }

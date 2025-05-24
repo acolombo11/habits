@@ -15,18 +15,12 @@ class GetVirtualEntriesUseCase @Inject constructor(
     private val habitRepository: HabitRepository,
     private val entryRepository: EntryRepository
 ) {
-
     operator fun invoke(habitId: Int): Flow<List<VirtualEntry>> {
-
         return combine(
             habitRepository.getHabitStream(habitId),
             entryRepository.getAllEntriesStream(habitId)
         ) { habit, entries ->
-
-
-            if (entries.isEmpty() || habit == null)
-                return@combine listOf<VirtualEntry>()
-
+            if (entries.isEmpty() || habit == null) return@combine listOf<VirtualEntry>()
 
             when (habit.frequency) {
 
@@ -63,15 +57,11 @@ class GetVirtualEntriesUseCase @Inject constructor(
                 HabitFrequency.DAILY -> {
                     return@combine entries.map { it.toVirtualEntry() }
                 }
-
             }
-
         }
-
     }
 
     private fun Entry.toVirtualEntry(): VirtualEntry {
         return VirtualEntry(id = id, habitId = habitId, date = date)
     }
-
 }

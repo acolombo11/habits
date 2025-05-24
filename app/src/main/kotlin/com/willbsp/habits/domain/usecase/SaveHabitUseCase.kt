@@ -19,7 +19,6 @@ class SaveHabitUseCase(
     private val reminderManager: ReminderManager,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-
     @Inject
     constructor(
         habitRepository: HabitRepository,
@@ -76,5 +75,4 @@ class SaveHabitUseCase(
             }
         }
     }
-
 }

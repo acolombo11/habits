@@ -50,14 +50,12 @@ fun HomeHabitCard(
     todaysDate: LocalDate,
     expandedInitialValue: Boolean = false,
 ) {
-
     var expanded by rememberSaveable { mutableStateOf(expandedInitialValue) }
 
     ElevatedCard(
         modifier = modifier.wrapContentHeight(),
         colors = CardDefaults.cardColors()
     ) {
-
         Column(
             modifier = Modifier
                 .clickable { expanded = !expanded }
@@ -103,7 +101,6 @@ fun HomeHabitCard(
             }
 
             if (expanded) {
-
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Row(
@@ -112,7 +109,6 @@ fun HomeHabitCard(
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-
                     HomeHabitCardDayRow(
                         habit = habit,
                         todaysDate = todaysDate,
@@ -128,12 +124,9 @@ fun HomeHabitCard(
                             contentDescription = stringResource(R.string.home_detail)
                         )
                     }
-
                 }
             }
-
         }
-
     }
 }
 
@@ -144,16 +137,13 @@ private fun HomeHabitCardDayRow(
     completedOnClick: (Int, LocalDate) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     BoxWithConstraints {
-
         val days: Int = (maxWidth.value / 60).toInt()
 
         Row(
             modifier = modifier.width(maxWidth.value.dp - 45.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-
             (1..days).forEach { i ->
                 val date = todaysDate.minusDays(i.toLong())
                 HomeHabitCardDay(
@@ -163,11 +153,8 @@ private fun HomeHabitCardDayRow(
                     date = date
                 )
             }
-
         }
-
     }
-
 }
 
 @Composable
@@ -178,7 +165,6 @@ private fun HomeHabitCardDay(
     completedByWeek: Boolean,
     date: LocalDate,
 ) {
-
     val weekday = date.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())
     val dayOfMonth = date.dayOfMonth.toString()
 
@@ -186,7 +172,6 @@ private fun HomeHabitCardDay(
         modifier = modifier.width(45.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Text(
             text = weekday,
             style = MaterialTheme.typography.bodyMedium,
@@ -206,9 +191,7 @@ private fun HomeHabitCardDay(
             checkedSecondary = completedByWeek,
             contentDescription = "${date.dayOfWeek} ${date.dayOfMonth}"
         )
-
     }
-
 }
 
 

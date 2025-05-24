@@ -100,5 +100,4 @@ class EditViewModel @Inject constructor(
     companion object {
         private const val HABIT_ID_SAVED_STATE_KEY = "habitId"
     }
-
 }

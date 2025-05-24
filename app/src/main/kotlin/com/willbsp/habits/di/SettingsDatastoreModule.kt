@@ -19,7 +19,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class SettingsDatastoreModule {
-
     private val Context.datastore by preferencesDataStore(name = SETTINGS_DATASTORE_NAME)
 
     @Singleton
@@ -34,5 +33,4 @@ class SettingsDatastoreModule {
             produceFile = { app.preferencesDataStoreFile(SETTINGS_DATASTORE_NAME) }
         )
     }
-
 }

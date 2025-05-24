@@ -26,7 +26,6 @@ class ExportDatabaseUseCase(
     suspend operator fun invoke(
         output: OutputStream
     ) = withContext(ioDispatcher) {
-
         val databaseFile = databaseUtils.getDatabasePath()
 
         if (databaseFile.exists()) {
@@ -34,7 +33,5 @@ class ExportDatabaseUseCase(
             output.write(databaseFile.readBytes())
             output.close()
         }
-
     }
-
 }

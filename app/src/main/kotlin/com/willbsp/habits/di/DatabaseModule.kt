@@ -16,7 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class DatabaseModule {
-
     @Singleton
     @Provides
     fun provideHabitDatabase(
@@ -38,5 +37,4 @@ class DatabaseModule {
 
     @Provides
     fun provideRawDao(db: HabitDatabase) = db.rawDao()
-
 }

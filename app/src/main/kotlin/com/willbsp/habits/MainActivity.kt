@@ -26,9 +26,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : ComponentActivity() {
 
-    private val IMPORT_SUCCESSFUL = "DATABASE_IMPORT_SUCCESSFUL"
-    private val IMPORT_INVALID = "DATABASE_IMPORT_INVALID"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -77,11 +74,12 @@ class MainActivity : ComponentActivity() {
 
     private fun restartActivityOnImport(successful: Boolean) {
         finish()
-        if (successful)
-            startActivity(intent.putExtra(IMPORT_SUCCESSFUL, true))
-        else
-            startActivity(intent.putExtra(IMPORT_INVALID, true))
+        startActivity(
+            intent.putExtra(if (successful) IMPORT_SUCCESSFUL else IMPORT_INVALID, true)
+        )
         Runtime.getRuntime().exit(0)
     }
-
 }
+
+private const val IMPORT_SUCCESSFUL = "DATABASE_IMPORT_SUCCESSFUL"
+private const val IMPORT_INVALID = "DATABASE_IMPORT_INVALID"
